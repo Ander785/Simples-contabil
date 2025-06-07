@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simples Contábil - Anderson Lima</title>
+  
+  <!-- Font Awesome CDN para ícones -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-papbXv+KXUy+qAl5t4CqKGtlRThb6X+J+4rHZC9vVzvQDLmJxWYKls+EyD0ZHPe0ddjYnW8Y7w6X5eChHrXdlA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      margin: 0 0 10px;
+      font-weight: 700;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.3rem;
+      margin: 0;
+      font-weight: 500;
+    }
+    main {
+      max-width: 1000px;
+      margin: 40px auto 60px;
+      padding: 0 20px;
+    }
+    h2 {
+      color: #003366;
+      margin-bottom: 25px;
+      font-weight: 700;
+      text-align: center;
+      font-size: 2rem;
+    }
+    .plans {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+    .plan {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      padding: 30px 20px;
+      width: 320px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 3px solid transparent;
+      text-align: center;
+    }
+    .plan:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+    .plan.selected {
+      border-color: #ffd700;
+      box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+      transform: translateY(-12px);
+    }
+    .plan h3 {
+      margin-top: 0;
+      font-weight: 700;
+      color: #003366;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    .plan p {
+      font-size: 1.1rem;
+      margin: 10px 0 25px;
+      color: #444;
+    }
+    .price {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #007bff;
+      margin-bottom: 15px;
+    }
+    .services-list {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 20px;
+    }
+    .services-list li {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      font-weight: 600;
+      color: #003366;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: background-color 0.3s ease;
+      cursor: default;
+    }
+    .services-list li:hover {
+      background-color: #ffd700;
+      color: #003366;
+    }
+    .services-list li i {
+      font-size: 1.8rem;
+      color: #007bff;
+      min-width: 32px;
+      text-align: center;
+    }
+    .btn-contact {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 15px 35px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s ease;
+      margin: 0 auto;
+      display: block;
+      width: max-content;
+      box-shadow: 0 6px 15px rgba(0,123,255,0.5);
+    }
+    .btn-contact:hover {
+      background-color: #0056b3;
+      box-shadow: 0 8px 20px rgba(0,86,179,0.7);
+    }
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    /* Responsividade */
+    @media (max-width: 650px) {
+      .plans {
+        flex-direction: column;
+        align-items: center;
+      }
+      .plan {
+        width: 100%;
+        max-width: 350px;
+      }
+      .services-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Simples Contábil - Anderson Lima</h1>
+  <p>Atendimento especializado para MEI e Imposto de Renda Pessoa Física</p>
+</header>
+
+<main>
+  <h2>Escolha seu Plano</h2>
+  <div class="plans" id="plans">
+    <div class="plan selected" data-plan="servico" tabindex="0" role="button" aria-pressed="true">
+      <h3>Plano por Serviço</h3>
+      <p>A partir de R$ 49,99</p>
+      <p class="price">R$ 49,99+</p>
+    </div>
+    <div class="plan" data-plan="mensal" tabindex="0" role="button" aria-pressed="false">
+      <h3>Plano Mensal</h3>
+      <p>Pacote com desconto e atendimento contínuo</p>
+      <p class="price">R$ 149,99/mês</p>
+    </div>
+  </div>
+
+  <ul class="services-list" id="services-list" aria-live="polite">
+    <!-- Serviços carregados via JS -->
+  </ul>
+
+  <a href="https://wa.me/5561981179625" target="_blank" class="btn-contact" aria-label="Contato via WhatsApp">Fale comigo no WhatsApp <i class="fab fa-whatsapp"></i></a>
+</main>
+
+<footer>
+  <p>&copy; 2025 Anderson Lima – Simples Contábil<br>Atendimento 100% online</p>
+</footer>
+
+<script>
+  const plans = document.querySelectorAll('.plan');
+  const servicesList = document.getElementById('services-list');
+
+  // Ícones para cada serviço
+  const icons = {
+    abertura: 'fa-file-circle-plus',
+    das: 'fa-calendar-check',
+    dasn: 'fa-file-invoice',
+    baixa: 'fa-file-circle-minus',
+    parcelamento: 'fa-hand-holding-dollar',
+    consulta: 'fa-magnifying-glass',
+    regularizacao: 'fa-check-circle',
+    irpf: 'fa-file-signature',
+    orientacoes: 'fa-comments'
+  };
+
+  const servicesPorServico = [
+    { text: "Abertura de MEI: CNPJ, inscrição municipal e estadual (se aplicável).", icon: icons.abertura },
+    { text: "Emissão mensal do DAS: Envio com lembrete.", icon: icons.das },
+    { text: "Declaração Anual do MEI (DASN-SIMEI): Preenchimento e envio.", icon: icons.dasn },
+    { text: "Baixa do MEI: Encerramento completo.", icon: icons.baixa },
+    { text: "Parcelamento de débitos: Regularização de dívidas com a Receita Federal.", icon: icons.parcelamento },
+    { text: "Consulta de pendências: Situação cadastral, desenquadramento e mais.", icon: icons.consulta },
+    { text: "Regularização na Receita Federal: CPF/CNPJ, declarações atrasadas, desbloqueios e reativações.", icon: icons.regularizacao },
+    { text: "Imposto de R
