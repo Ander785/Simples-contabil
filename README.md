@@ -1,2 +1,2 @@
 # Simples-contabil
-Simplificação contabil - Mei e PF
+Contabilidade com preço justo e sem burocracia.
